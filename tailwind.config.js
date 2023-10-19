@@ -1,32 +1,29 @@
 const tailwindcss = require("tailwindcss");
 
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}','./public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  darkMode: "media", // or 'media' or 'class'
   theme: {
     extend: {
-      fontFamily : {
-        sans: ["Open Sanss"]
+      fontFamily: {
+        sans: ["Open Sanss"],
       },
-      gridTemplateColumns:{
-        "1/5":"1fr 5fr"
-      }
+      gridTemplateColumns: {
+        "1/5": "1fr 5fr",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/forms')],
-}
-
-
-
+  plugins: [require("@tailwindcss/forms")],
+};
 
 // module.exports = {
 //   purge: ['./src/**/*.{js,jsx,ts,tsx}','./public/index.html'],
 //   darkMode: false, // or 'media' or 'class'
 //   theme: {
-    
+
 //     screens: {
 //       'tablet': '640px',
 //       // => @media (min-width: 640px) { ... }
@@ -40,4 +37,3 @@ module.exports = {
 //     plugins: [require('@tailwindcss/forms')],
 //   }
 // }
-
