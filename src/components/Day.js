@@ -5,6 +5,7 @@ import "../App.css";
 
 export default function Day({ day, rowIdx, evt, time, timeString }) {
   const [dayEvents, setDayEvents] = useState([]);
+  console.log(dayEvents);
   const [show, setShow] = useState(false);
   const sDate = new Date(day);
   let syr = sDate.getFullYear();
@@ -31,11 +32,11 @@ export default function Day({ day, rowIdx, evt, time, timeString }) {
       var spit = evt.liturgy_on.split(" ");
       spit = spit[0].split("-");
       var sspitv = spit[0] + "-" + spit[1] + "-" + spit[2];
-      var m = sspitv == mnp ? evt.liturgy_on : "";
+      var m = sspitv === mnp ? evt.liturgy_on : "";
       return m;
     });
     setMassTime(events1);
-  }, [filteredEvents, advice, day]);
+  }, [filteredEvents, advice, day, mnp]);
 
   function getCurrentDayClass() {
     return day.format("DD/MM-/YY") === dayjs().format("DD/MM/YY")
@@ -73,7 +74,6 @@ export default function Day({ day, rowIdx, evt, time, timeString }) {
         }}
       >
         {massTime.map((evt, idx) => {
-
           var cur_time = new Date().getTime();
           var api_time = new Date(evt?.liturgy_on.replace(/-/g, "/"));
           var booking_time = new Date(api_time);
@@ -81,7 +81,7 @@ export default function Day({ day, rowIdx, evt, time, timeString }) {
           booking_time.setHours(17, 0, 0, 0); // Set time to 5:00 PM
           if (cur_time <= booking_time.getTime()) {
             var spit = evt.liturgy_on.split(" ");
-            
+
             return (
               <div
                 key={idx}
@@ -89,7 +89,7 @@ export default function Day({ day, rowIdx, evt, time, timeString }) {
                   setNewSelectedEvent(evt);
                   setShowEventModal(true);
                 }}
-                className={`bg-green-200 p-1 mr-3  text-sm rounded mb-1 truncate`}
+                className={`bg-green-200 p-1 mr-3 text-sm rounded mb-1 truncate`}
                 style={{
                   backgroundColor:
                     evt.language_id[1] === "Konkani"
@@ -106,13 +106,16 @@ export default function Day({ day, rowIdx, evt, time, timeString }) {
                 }}
               >
                 <p title="Add new intention">
-                  {spit[1]} - {spit[2]} - {evt.language_id["1"]}
+                  {spit[1]} - {spit[2]} - {evt.language_id[1]}
                 </p>
               </div>
             );
+          } else {
+            // Return null for cases where the condition is not met
+            return null;
           }
-
         })}
+
         {show && (
           <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">

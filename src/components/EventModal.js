@@ -51,14 +51,13 @@ export default function EventModal() {
     axios
       .get("prayer/category")
       .then((res) => {
-          setCategory(res && res.data.data);
-          console.log(res && res.data.data); // Log the updated data
+        setCategory(res && res.data.data);
+        console.log(res && res.data.data); // Log the updated data
       })
       .catch((error) => {
-          // Handle error if needed
+        // Handle error if needed
       });
-}, []);
-
+  }, []);
 
   function hadleSubmit(e) {
     e.preventDefault();
@@ -80,6 +79,7 @@ export default function EventModal() {
         payment_status: "YES",
         payment_reference: "XXXXX",
       };
+      console.log("masslist:", masslist);
       // console.log(masslist);
 
       // axios.post('/massbook/create-mass-booking', masslist)
@@ -151,14 +151,17 @@ export default function EventModal() {
                           setShowEventModal(false);
                         }}
                         className="material-icons-outlined text-red-500 delete"
-                        title="Delete" style={{cursor:"pointer"}}>
+                        title="Delete"
+                        style={{ cursor: "pointer" }}
+                      >
                         delete
                       </span>
                     )}
                     <button onClick={() => setShowEventModal(false)}>
                       <span
                         className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full"
-                        title="Close">
+                        title="Close"
+                      >
                         X
                       </span>
                     </button>
@@ -171,16 +174,24 @@ export default function EventModal() {
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     <b style={{marginLeft: "18rem"}}>Note:</b>
                   </label> */}
-                  <br/>
+                  <br />
                   <div className="relative">
                     <b>
-                    <h2 style={{ color: "red", marginLeft: "1rem",textAlign:"center" }}>
+                      <h2
+                        style={{
+                          color: "red",
+                          marginLeft: "1rem",
+                          textAlign: "center",
+                        }}
+                      >
                         {" "}
-                       The cut-off time / date for mass booking is 05:00pm - one day before the planned mass date.<br/>
-                       (OR)
-                       Kindly Contact Church Office @ Mob : 7795349370<br/>
-                       (during church office working hour's :-
-                       9:00am to 5:00pm : Monday to Saturday)
+                        The cut-off time / date for mass booking is 05:00pm -
+                        one day before the planned mass date.
+                        <br />
+                        (OR) Kindly Contact Church Office @ Mob : 7795349370
+                        <br />
+                        (during church office working hour's :- 9:00am to 5:00pm
+                        : Monday to Saturday)
                       </h2>
                     </b>
                   </div>
@@ -190,7 +201,7 @@ export default function EventModal() {
                                     schedule
                                     </span> */}
                   {
-                    <p style={{ color: "green" ,textAlign:"center" }}>
+                    <p style={{ color: "green", textAlign: "center" }}>
                       {language["1"]}: {daySelected.format("ddd, DD MMM ")}{" "}
                       {spit[1]} {spit[2]}
                     </p>
@@ -206,7 +217,8 @@ export default function EventModal() {
                     required
                     style={{ borderColor: "#cccccc", display: "none" }}
                     onChange={(e) => setMassTiming(e.target.value)}
-                    disabled="disabled"></input>
+                    disabled="disabled"
+                  ></input>
                   <input
                     type="text"
                     name="language"
@@ -215,7 +227,8 @@ export default function EventModal() {
                     required
                     style={{ borderColor: "#cccccc", display: "none" }}
                     onChange={(e) => setLanguage(e.target.value)}
-                    disabled="disabled"></input>
+                    disabled="disabled"
+                  ></input>
                   <input
                     type="text"
                     name="massId"
@@ -224,13 +237,15 @@ export default function EventModal() {
                     required
                     style={{ borderColor: "#cccccc", display: "none" }}
                     onChange={(e) => setMassId(e.target.value)}
-                    disabled="disabled"></input>
+                    disabled="disabled"
+                  ></input>
                   <form className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
                     <div className="flex -mx-3">
                       <div className="w-1/2 px-3 mb-5">
                         <label
                           htmlFor="icon-users"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
                           Name<span style={{ color: "red" }}>*</span>
                         </label>
                         <div className="relative">
@@ -238,14 +253,17 @@ export default function EventModal() {
                             <svg
                               className="w-5 h-5 text-gray-500 dark:text-gray-400"
                               fill="currentColor"
-                              viewBox="0 0 20 20">
+                              viewBox="0 0 20 20"
+                            >
                               {" "}
                               <path
                                 className="path1"
-                                d="M12 12.041v-0.825c1.102-0.621 2-2.168 2-3.716 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h14c0-2.015-2.608-3.682-6-3.959z"></path>
+                                d="M12 12.041v-0.825c1.102-0.621 2-2.168 2-3.716 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h14c0-2.015-2.608-3.682-6-3.959z"
+                              ></path>
                               <path
                                 className="path2"
-                                d="M5.112 12.427c0.864-0.565 1.939-0.994 3.122-1.256-0.235-0.278-0.449-0.588-0.633-0.922-0.475-0.863-0.726-1.813-0.726-2.748 0-1.344 0-2.614 0.478-3.653 0.464-1.008 1.299-1.633 2.488-1.867-0.264-1.195-0.968-1.98-2.841-1.98-3 0-3 2.015-3 4.5 0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h4.359c0.227-0.202 0.478-0.393 0.753-0.573z"></path>
+                                d="M5.112 12.427c0.864-0.565 1.939-0.994 3.122-1.256-0.235-0.278-0.449-0.588-0.633-0.922-0.475-0.863-0.726-1.813-0.726-2.748 0-1.344 0-2.614 0.478-3.653 0.464-1.008 1.299-1.633 2.488-1.867-0.264-1.195-0.968-1.98-2.841-1.98-3 0-3 2.015-3 4.5 0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h4.359c0.227-0.202 0.478-0.393 0.753-0.573z"
+                              ></path>
                             </svg>
                           </div>
                           <input
@@ -269,7 +287,8 @@ export default function EventModal() {
                       <div className="w-1/2 px-3 mb-5">
                         <label
                           htmlFor="icon-users"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
                           Offered For<span style={{ color: "red" }}>*</span>
                         </label>
                         <div className="relative">
@@ -277,14 +296,17 @@ export default function EventModal() {
                             <svg
                               className="w-5 h-5 text-gray-500 dark:text-gray-400"
                               fill="currentColor"
-                              viewBox="0 0 20 20">
+                              viewBox="0 0 20 20"
+                            >
                               {" "}
                               <path
                                 className="path1"
-                                d="M12 12.041v-0.825c1.102-0.621 2-2.168 2-3.716 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h14c0-2.015-2.608-3.682-6-3.959z"></path>
+                                d="M12 12.041v-0.825c1.102-0.621 2-2.168 2-3.716 0-2.485 0-4.5-3-4.5s-3 2.015-3 4.5c0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h14c0-2.015-2.608-3.682-6-3.959z"
+                              ></path>
                               <path
                                 className="path2"
-                                d="M5.112 12.427c0.864-0.565 1.939-0.994 3.122-1.256-0.235-0.278-0.449-0.588-0.633-0.922-0.475-0.863-0.726-1.813-0.726-2.748 0-1.344 0-2.614 0.478-3.653 0.464-1.008 1.299-1.633 2.488-1.867-0.264-1.195-0.968-1.98-2.841-1.98-3 0-3 2.015-3 4.5 0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h4.359c0.227-0.202 0.478-0.393 0.753-0.573z"></path>
+                                d="M5.112 12.427c0.864-0.565 1.939-0.994 3.122-1.256-0.235-0.278-0.449-0.588-0.633-0.922-0.475-0.863-0.726-1.813-0.726-2.748 0-1.344 0-2.614 0.478-3.653 0.464-1.008 1.299-1.633 2.488-1.867-0.264-1.195-0.968-1.98-2.841-1.98-3 0-3 2.015-3 4.5 0 1.548 0.898 3.095 2 3.716v0.825c-3.392 0.277-6 1.944-6 3.959h4.359c0.227-0.202 0.478-0.393 0.753-0.573z"
+                              ></path>
                             </svg>
                           </div>
                           <input
@@ -309,7 +331,8 @@ export default function EventModal() {
                     <div className="mb-5">
                       <label
                         htmlFor="email-address-icon"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
                         Intention<span style={{ color: "red" }}>*</span>
                       </label>
                       <div className="relative">
@@ -317,24 +340,28 @@ export default function EventModal() {
                           <svg
                             className="w-5 h-5 text-gray-500 dark:text-gray-400"
                             fill="currentColor"
-                            viewBox="0 0 20 20">
+                            viewBox="0 0 20 20"
+                          >
                             <path d="M 4 4 h 16 a 2 2 0 0 1 2 2 v 14" />
                           </svg>
                         </div>
                         <select
                           onChange={(e) => setIntention(e.target.value)}
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        >
                           <option>Select Intention</option>
                           <option
                             value="Other"
-                            selected={intention === "Other"}>
+                            selected={intention === "Other"}
+                          >
                             Others
                           </option>
                           {category.map((option) => (
                             <option
                               key={option.id}
                               value={option.name}
-                              selected={intention === option.name}>
+                              selected={intention === option.name}
+                            >
                               {option.name}
                             </option>
                           ))}
@@ -352,7 +379,8 @@ export default function EventModal() {
                       <div className="mb-5" id="otherintension">
                         <label
                           htmlFor="email-address-icon"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
                           Others<span style={{ color: "red" }}>*</span>
                         </label>
                         <div className="relative">
@@ -360,7 +388,8 @@ export default function EventModal() {
                             <svg
                               className="w-5 h-5 text-gray-500 dark:text-gray-400"
                               fill="currentColor"
-                              viewBox="0 0 20 20">
+                              viewBox="0 0 20 20"
+                            >
                               <path d="M 4 4 h 16 a 2 2 0 0 1 2 2 v 14" />
                             </svg>
                           </div>
@@ -387,7 +416,8 @@ export default function EventModal() {
                       <div className="w-1/2 px-3 mb-5">
                         <label
                           htmlFor="email-address-icon"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
                           {" "}
                           Email<span style={{ color: "red" }}>*</span>
                         </label>
@@ -396,7 +426,8 @@ export default function EventModal() {
                             <svg
                               className="w-5 h-5 text-gray-500 dark:text-gray-400"
                               fill="currentColor"
-                              viewBox="0 0 20 20">
+                              viewBox="0 0 20 20"
+                            >
                               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                             </svg>
@@ -422,7 +453,8 @@ export default function EventModal() {
                       <div className="w-1/2 px-3 mb-5">
                         <label
                           htmlFor="email-address-icon"
-                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
                           Phone Number<span style={{ color: "red" }}>*</span>
                         </label>
                         <div className="relative">
@@ -430,11 +462,13 @@ export default function EventModal() {
                             <svg
                               className="w-5 h-5 text-gray-500 dark:text-gray-400"
                               fill="currentColor"
-                              viewBox="0 0 20 20">
+                              viewBox="0 0 20 20"
+                            >
                               {" "}
                               <path
                                 className="path1"
-                                d="M11.5 0h-7c-0.825 0-1.5 0.675-1.5 1.5v13c0 0.825 0.675 1.5 1.5 1.5h7c0.825 0 1.5-0.675 1.5-1.5v-13c0-0.825-0.675-1.5-1.5-1.5zM6 0.75h4v0.5h-4v-0.5zM8 15c-0.552 0-1-0.448-1-1s0.448-1 1-1 1 0.448 1 1-0.448 1-1 1zM12 12h-8v-10h8v10z"></path>
+                                d="M11.5 0h-7c-0.825 0-1.5 0.675-1.5 1.5v13c0 0.825 0.675 1.5 1.5 1.5h7c0.825 0 1.5-0.675 1.5-1.5v-13c0-0.825-0.675-1.5-1.5-1.5zM6 0.75h4v0.5h-4v-0.5zM8 15c-0.552 0-1-0.448-1-1s0.448-1 1-1 1 0.448 1 1-0.448 1-1 1zM12 12h-8v-10h8v10z"
+                              ></path>
                             </svg>
                           </div>
                           <input
@@ -467,14 +501,16 @@ export default function EventModal() {
                     data-modal-toggle="defaultModal"
                     type="button"
                     className="text-white bg-green-300 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-600 dark:focus:ring-green-600"
-                    onClick={hadleSubmit}>
+                    onClick={hadleSubmit}
+                  >
                     Submit
                   </button>
                   <button
                     data-modal-toggle="defaultModal"
                     type="button"
                     className="text-white bg-red-300 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
-                    onClick={() => setShowEventModal(false)}>
+                    onClick={() => setShowEventModal(false)}
+                  >
                     Cancel
                   </button>
                 </div>
