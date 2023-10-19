@@ -1,8 +1,8 @@
 const tailwindcss = require("tailwindcss");
 
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: "media", 
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"], // Use the 'content' property to specify content sources.
+  darkMode: "media",
   theme: {
     extend: {
       fontFamily: {
