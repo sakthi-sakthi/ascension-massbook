@@ -49,7 +49,7 @@ export default function EventModal() {
 
   useEffect(() => {
     axios
-      .get("http://139.162.8.46:6069/api/prayer/category/17489")
+      .get("prayer/category")
       .then((res) => {
         setCategory(res && res.data.data);
         console.log(res && res.data.data); // Log the updated data
