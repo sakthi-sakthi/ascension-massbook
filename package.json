@@ -53,5 +53,6 @@
   },
   "overrides": {
     "autoprefixer": "10.4.5"
-  }
+  },
+  "proxy": "https://cristolive.org/api/"
 }
